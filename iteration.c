@@ -16,7 +16,7 @@ PetscErrorCode Update(void *ptr){
   	
     for (user->BDFiA = user->BDFi - user->BDFAorB; user->BDFiA <= user->BDFi; user->BDFiA++ ){
     	user->order = min(user->curN+1, user->BDFiA);
-    	ierr = PetscPrintf(comm, "order = %d, discrete form = BDF%d%c\n", (int)user->order, (int)user->BDFi, (char)(user->BDFAorB+'A')); CHKERRQ(ierr);
+    	ierr = PetscPrintf(PETSC_COMM_WORLD, "order = %d, discrete form = BDF%d%c\n", (int)user->order, (int)user->BDFi, (char)(user->BDFAorB+'A')); CHKERRQ(ierr);
 		//ierr = PetscPrintf(PETSC_COMM_WORLD, "calculate BDF%d%c\n", (int)user->BDFi, (char)(user->BDFAorB+'A')); CHKERRQ(ierr);
 		if (user->BDFiA == user->BDFi - user->BDFAorB){
 			ierr = VecSet(user->x_sum, 0); CHKERRQ(ierr);
