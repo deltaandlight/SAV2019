@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.14pt}
+\beamer@sectionintoc {1}{Chinese}{3}{0}{1}
+\beamer@sectionintoc {2}{Introduction of Gradient Flow}{8}{0}{2}
+\beamer@sectionintoc {3}{Different method}{10}{0}{3}
+\beamer@sectionintoc {4}{SAV Versions of Several Discrete Formats}{22}{0}{4}
+\beamer@sectionintoc {5}{Advantage of SAV}{25}{0}{5}
+\beamer@sectionintoc {6}{Disadvantage of SAV}{27}{0}{6}
+\beamer@sectionintoc {7}{Numerical result}{28}{0}{7}

@@ -1,0 +1,122 @@
+\documentclass{beamer}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+\begin{document}
+\begin{frame}
+	\title{Numerical experiments of \\
+scalar auxiliary variable (SAV) approach}
+	\author{Liang Zeng}
+    \date{\today}
+	\institute {Email: zengliangpku@pku.edu.cn, \\
+                School of Mathematical Sciences, Peking University}
+	
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Example of Cahn-Hilliard equation}
+The free energy of Cahn-Hilliard equation takes the form,
+$$
+\mathrm{E}(\phi)=
+\int_{\Omega}
+\Big\{
+\frac{1}{2}{\left|\nabla\phi\right|}^2
++\frac{({\phi}^2-1)^2}{4{\epsilon}^2}
+\Big\}dx
+$$
+
+For the SAV schemes, we specify the linear non-negative operator as $\mathrm{L}=-\Delta$ and the non-positive operator as $\mathrm{G}=\Delta$.
+
+The CH equation takes the form,
+\begin{equation}\label{CN}
+\frac{\partial\phi}{\partial t}
+=\mathrm{G}(\mathrm{L}\phi
++\frac{({\phi}^2-1)^2}{{\epsilon}^2})
+\end{equation}
+\end{frame}
+
+\begin{frame}
+\frametitle{Discrete form}
+The SAV/BDF3 scheme is given by
+\begin{equation}\label{BDF3}
+\begin{aligned}
+   \frac{11{\phi}^{n+1}-18{\phi}^n + 9{\phi}^{n-1}-2{\phi}^{n-2}}{6\Delta t} = \mathrm{G}{\mu}^{n+1}&, \\
+   {\mu}^{n+1}  = \mathrm{L}{\phi}^{n+1} 
+   + \frac{r^{n+1}}{\sqrt{\mathrm{E}_1\left[{\overline{\phi}}^{n+1}\right]}}&, \\
+    11r^{n+1}-18r^{n}+r^{n-1}-2r^{n-2} &= \\
+    \int_{\Omega}
+    \frac{U\left[{\overline{\phi}}^{n+1}\right]}{2\sqrt{\mathrm{E}_1\left[{\overline{\phi}}^{n+1}\right]}}
+    (11{\phi}^{n+1}-18{\phi}^n+9{\phi}^{n-1}&-2{\phi}^{n-2})dx,
+\end{aligned}
+\end{equation}
+where ${\overline{\phi}}^{n+1}$ is a third-order explicit approximation to $\phi(t_{n+1})$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Numerical result}
+We fix the computational domain as $\left[0,2\pi\right)^2$ and $\epsilon = 0.1$. $\Delta T={10}^{-5}$ and the size of uniform grid is $N\times N=2^7 \times 2^7$. The initial data is $u_0(x,y)=0.05\sin(x)\sin(y)$.
+
+The energy evolution process are shown in Fig.\ref{CH.T0.032}, the process ends when $T=0.032$.
+\begin{figure}[h]
+    \centering
+    \begin{minipage}[t]{0.5\linewidth}
+        \centering
+        \includegraphics[width=1.8in]{pic/example6_fig6/dt=1e-5_endT=0032.jpg}
+        \caption{Simulated solution}
+        \label{CH.T0.032}
+    \end{minipage}%
+    \begin{minipage}[t]{0.5\linewidth}
+        \centering
+        \includegraphics[width=1.8in]{pic/example6_fig6/0REF_dt=1e-4_endT=0032.jpg}
+        \caption{Reference solution}
+        \label{REF_CH.T0.032}
+    \end{minipage}   
+\end{figure}
+
+The numerical result is consistent with the reference solution.
+\end{frame}
+
+\begin{frame}
+\frametitle{Example of Phase field crystals}
+A usual free energy takes the form,
+$$
+\mathrm{E}(\phi)=
+\int_{\Omega}
+\Big\{
+\frac{1}{4}\phi
++\frac{1-\epsilon}{2}{\phi}^2
+-{\left|\nabla\phi\right|}^2
++\frac{1}{2}{(\Delta\phi)}^2
+\Big\}dx.
+$$
+
+For the SAV schemes, we specify the linear non-negative operator as $\mathrm{L}={\Delta}^2+2\Delta+I$ and the non-positive operator as 
+$\mathrm{G}=\Delta$. The equation takes the form,
+
+\begin{equation}\label{PFC}
+\frac{\partial\phi}{\partial t}
+=\mathrm{G}(\mathrm{L}\phi
+-\epsilon\phi
++{\phi}^3).
+\end{equation}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Numerical result}
+We consider the gradient flow equation in the two-dimensional domain $\left[0,50\right]\times\left[0,50\right]$ with periodic boundary conditions. Fix $\epsilon = 0.025, \Delta T=1$ and the size of uniform grid $N\times N=2^7 \times 2^7$.
+ 
+The initial values $\phi_0$ are uniformly distributed from 0.01 to 0.14 with $\overline{\phi_0}=0.07$. We also use BDF3A discrete form to simulate the process. When $T=4800$, $\phi$ becomes the result in Fig.\ref{PFC.T4800}, which is consisitent with what is known.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=5cm]{pic/example5_fig4/myfig_image48.jpg}
+  \caption{$T=4800$}\label{PFC.T4800}
+\end{figure}
+\end{frame}
+
+\end{document} 

@@ -1,0 +1,391 @@
+\documentclass{beamer}
+\usepackage{amsfonts}
+%\usepackage{times}
+
+%\usepackage[backend=bibtex,sorting=none]{biblatex}
+%\addbibresource{SAV_report.bib}
+\title{Introduction of SAV method}
+\author{Liang Zeng}
+\begin{document}
+
+\frame{\titlepage}
+\begin{frame}
+\frametitle{Contents}
+  \tableofcontents
+\end{frame}
+%\section{数值方法的评判标准}
+\section{Chinese}
+    \begin{frame}
+    \frametitle{Stability}
+
+Consistent dependence on initial and boundary values.
+
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Existence and uniqueness of solution}
+
+        neirong2
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Dissipation}
+
+        Energy analysis method
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Convergence and Error}
+
+        neirong2
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Computational overhead}
+
+        linear?
+
+    Constant/variable coefficients?
+
+    Parallelism?
+        %\footfullcite{bib_item}
+
+    \end{frame}
+
+
+\section{Introduction of Gradient Flow}
+    \begin{frame}{Introduction of Gradient flows}
+        A gradient flow is determined not only by the driving free energy, but also the dissipation mechanism. Given a free energy functional $\mathrm{E}[\phi(x)]$ bounded from below. Denote its variational derivative as $\mu=\delta\mathrm{E}/\delta \phi$. The general form of the gradient flow can be written as
+
+\begin{equation}\label{GFlow}
+  \frac{\partial\phi}{\partial t} = \mathrm{G}\mu ,\quad
+\end{equation}
+
+        supplemented with suitable boundary conditions. To simplify the presentation, we assume throughout the paper that the boundary conditions are chosen such that all boundary terms will vanish when integrating by parts are performed. This is true with periodic boundary conditions or homogeneous Neumann boundary conditions.
+    %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+
+        neirong2
+        %\footfullcite{bib_item}
+
+    \end{frame}
+
+\section{Different method}
+
+    \begin{frame}
+    \frametitle{Convex splitting approach}
+
+A very popular approach for gradient flow is the so called convex splitting method which appears to be introduced by 9 and popularized by 10. Assuming the free energy density $F(\phi)$ can be split as the difference of two convex functions, namely, $F(\phi)=F_c(\phi)-−F_e(\phi)$ with $F''_c(\phi), F''_e(\phi)\geq 0.$
+
+ Then, the first-order convex splitting scheme reads:
+
+\begin{equation}\label{Convex}
+  \begin{split}
+     \frac{\phi^{n+1}-\phi^n}{\delta t}&=\delta \mu^{n+1},\\
+     \mu^{n+1} = -\Delta\phi^{n+1}&+(F'_c(\phi^{n+1})-F'_e(\phi^n)).
+  \end{split}
+\end{equation}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Convex splitting approach}
+One can easily show that the above scheme is unconditionally energy stable in the sense that
+
+$$
+E(\phi^{n+1})-E(\phi^n)\leq -\delta t \Vert\nabla\mu^{n+1}\Vert^2.
+$$
+
+
+%which is a discrete analog of (1.3). The convex splitting approach enjoys the following advantages: (i) It is unconditionally energy stable; (ii) It is uniquely solvable; and (iii) It leads to a convex minimization problem at each time step. But it also suffers from shortcomings such as (i) A nonlinear system has to be solved at each time step; and (ii) There is no general approach to construct unconditionally stable second-order convex splitting schemes, although such schemes have been developed case-by-case for some problems.
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Stabilized approach}
+The main idea is to introduce an artificial stabilization term to balance the explicit treatment of the nonlinear term. A first-order stabilized scheme for \ref{GFlow} reads:
+
+\begin{equation}\label{Stabilized approach}
+  \begin{split}
+\frac{1}{\delta t}(\phi^{n+1}-\phi^n) &= \Delta \mu^{n+1},\\
+\mu^{n+1} = -\Delta\phi^{n+1}&+S(\phi^{n+1}-\phi^n)+F
+  \end{split}
+\end{equation}
+
+where S is a suitable stabilization parameter. It is shown in [18] that, under the assumption $\Vert F''(\phi)\Vert_\infty\leq L$, the above scheme is unconditionally stable for all $S \geq L_2$.
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Invariant energy quadratization (IEQ) approaches}
+
+Assuming that there exists $C_0 \geq 0$ such that $F(\phi) \geq -C_0$, one then introduces a Lagrange multiplier (auxiliary variable) $q(t,x;\phi)=\sqrt{F(\phi)+C_0}$, and rewrite the equation as
+
+\begin{equation}\label{IEQ}
+  \begin{split}
+\phi_t&=\Delta\mu,\\
+\mu&=-\Delta\phi+\frac{q}{\sqrt{F(\phi)+C_0}}F'(\phi),\\
+q_t&=\frac{F'(\phi)}{2\sqrt{F(\phi)+C_0}}\phi_t.
+  \end{split}
+\end{equation}
+
+Taking the inner products of the above with $\mu$, $\phi_t$ and $2q$, respectively, we see that the above system satisfies a modified energy dissipation law:
+
+$$
+\frac{d}{dt}(\frac{1}{2}\Vert\nabla\phi\Vert^2+\int_{\Omega}q^2 dx)=-\Vert\nabla\mu\Vert^2.
+$$
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Invariant energy quadratization (IEQ) approaches}
+
+The above formulation is amenable to simple and efficient numerical schemes. Consider for instance,
+
+\begin{equation}\label{DisIEQ}
+  \begin{split}
+\frac{\phi^{n+1}-\phi^{n}}{\delta t}&=\Delta\mu^{n+1},\\
+\mu^{n+1}&=-\Delta\phi^{n+1}+\frac{q^{n+1}}{\sqrt{F(\phi^n)+C_0}}F'(\phi^n),\\
+\frac{q^{n+1}-q^n}{\delta t}&=\frac{F'(\phi^n)}{2\sqrt{F(\phi^n)+C_0}}\frac{\phi^{n+1}-\phi^{n}}{\delta t}.
+  \end{split}
+\end{equation}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Invariant energy quadratization (IEQ) approaches}
+
+Taking the inner products of the above with $\mu^{n+1}$, $\frac{\phi^{n+1}-\phi^n}{\delta t}$ and $2q^{n+1}$, respectively, one obtains immediately:
+
+\begin{equation}\label{haosan}
+  \begin{split}
+\frac{1}{\delta t}[\frac{1}{2}\Vert\nabla\phi^{n+1}\Vert^2+\int_{\Omega}{(q^{n+1})}^2dx-\frac{1}{2}\Vert\nabla\phi^n\Vert^2&-\int_{\Omega}{(q^n)}^2dx\\
++\frac{1}{2}\Vert\nabla(\phi^{n+1}-\phi^n)\Vert^2+\int_{\Omega}(q^{n+1}-q^n)^2dx]&=-\Vert\nabla\mu^{n+1}\Vert^2,
+\end{split}
+\end{equation}
+
+which indicates that the above scheme is unconditionally stable with respect to the modified energy.
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{The scalar auxiliary variable (SAV) approach}
+
+we now only assume $E_1(\phi):=\int_{\Omega}F(\phi)dx$ is bounded from below, i.e., $E_1(\phi)\geq−C_0$, which is necessary for the free energy to be physically sound, and
+introduce a scalar auxiliary variable (SAV):
+
+$$
+r(t)=\sqrt{E_1(\phi)+C_0}.
+$$
+
+Then, \ref{GFlow} can be rewritten as:
+
+\begin{equation}\label{SAV}
+  \begin{split}
+\phi_t&=\Delta\mu,\\
+\mu&=-\Delta\phi+\frac{r}{\sqrt{E_1[\phi]+C_0}}F'(\phi),\\
+r_t&=\frac{1}{2\sqrt{E_1[\phi]+C_0}}\int_{\Omega}F'(\phi)\phi_t dx.
+  \end{split}
+\end{equation}
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+\frametitle{The scalar auxiliary variable (SAV) approach}
+
+Taking the inner products of the above with $\mu, \frac{\partial\phi}{\partial t}\text{ and }2r$, respectively, we obtain the modified energy dissipation law:
+
+$$
+\frac{d}{dt}(\frac{1}{2}\Vert\nabla\phi\Vert^2+r^2(t))=-\Vert\nabla\mu\Vert^2.
+$$
+
+We now construct a semi-implicit second-order BDF scheme for the above system.
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+\frametitle{The scalar auxiliary variable (SAV) approach}
+
+\begin{equation}\label{SAV-BDF2}
+  \begin{split}
+\frac{3\phi^{n+1}-4\phi^n+\phi^{n-1}}{2\delta t}&=\Delta\mu^{n+1},\\
+\mu^{n+1}=-\Delta\phi^{n+1}+&\frac{r^{n+1}}{\sqrt{E_1[\overline{\phi}^{n+1}]+C_0}}F'(\overline{\phi}^{n+1}),\\
+\frac{3r^{n+1}-4r^n+r^{n-1}}{2\delta t}&=\int_{\Omega}\frac{F'(\overline{\phi}^{n+1})}{2\sqrt{E_1[\overline{\phi}^{n+1}]+C_0}}\frac{3\phi^{n+1}-4\phi^n+\phi^{n-1}}{2\delta t} dx.
+  \end{split}
+\end{equation}
+
+where $\overline{\phi}^{n+1}$ is any explicit $O(\delta t^2)$ approximation for $\phi(t^{n+1})$, which can be flexible according to the problem, and which we will specify in our numerical results.
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+
+We can eliminate $\mu^{n+1}$ and $r^{n+1}$ from (\ref{SAV-BDF2}) to obtain
+
+\begin{equation}\label{3.6}
+\begin{split}
+   \frac{3\phi^{n+1}-4\phi^n+\phi^{n-1}}{2\delta t}=-\Delta^2\phi^{n+1}&+\frac{\Delta F'(\overline{\phi}^{n+1})}{3\sqrt{E_1[\overline{\phi}^{n+1}]+C_0}}(4r^n \\
+   -r^{n-1}+\int_{\Omega}\frac{F'(\overline{\phi}^{n+1})}{2\sqrt{E_1[\overline{\phi}^{n+1}]+C_0}}&(3\phi^{n+1}-4\phi^n+\phi^{n-1})dx).
+\end{split}
+\end{equation}
+Denote
+\begin{equation}\label{bn}
+  \begin{split}
+b^n&=\frac{F'(\overline{\phi}^{n+1})}{\sqrt{E_1[\overline{\phi}^{n+1}]+C_0}}, \\
+A&=I+(2\delta t/3)\Delta^2 \\
+g^n&=\frac{1}{3}(4\phi^n-3\phi^{n-1})\\
++&\frac{2\delta t}{9}[4r^n-r^{n-1}-\frac{1}{2}(b^n,4\phi^n-\phi^{n-1})]\Delta b^n
+  \end{split}
+\end{equation}
+
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+
+We can get
+
+\begin{equation}\label{3.7}
+  A\phi^{n+1}-\frac{\delta t}{3}(b^n, \phi^{n+1})\Delta b^n=g^n,
+\end{equation}
+
+Then
+
+\begin{equation}\label{3.8}
+  (b^n,\phi^{n+1})+\frac{\delta t}{3}\gamma^n(b^n,\phi^{n+1})=(b^n,A^{-1}g^n),,
+\end{equation}
+where $\gamma=-(b^n,A^{-1}\Delta b^n)\geq 0$, so
+\begin{equation}\label{3.9}
+  (b^n,\phi^{n+1})=\frac{(b^n,A^{-1}g^n)}{1+\delta t\gamma^n/3}.
+\end{equation}
+Finally, we can solve $\phi^{n+1}$ from (\ref{3.7}).
+        %\footfullcite{bib_item}
+
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+\frametitle{Unconditional energy stability of SAV/BDF2}
+
+The scheme (\ref{SAV-BDF2})is second-order accurate,unconditionally energy stable in the sense that
+\begin{equation}\label{the2.2}
+  \begin{split}
+     \frac{1}{\Delta t} & \{ \tilde{E}[ (\phi^{n+1},r^{n+1}),(\phi^n,r^n) ]-\tilde{E}[ (\phi^{n},r^{n}),(\phi^{n-1},r^{n-1}) ] \}\\
+       & +\frac{1}{\Delta t}\{ \frac{1}{4}(\phi^{n+1}-2\phi^n+\phi^{n-1},-\Delta(\phi^{n+1}-2\phi^n+\phi^{n-1}))\\
+       & +\frac{1}{2}(r^{n+1}-2r^n+r^{n-1})^2 \}=(\mu,\Delta \mu), 
+  \end{split}
+\end{equation}
+
+where the modified discrete energy is defined as
+\begin{equation}\label{the2.2.2}
+  \begin{split}
+     &\tilde{E}[(\phi^{n+1},r^{n+1}),(\phi^n,r^n)]=\frac{1}{4}((\phi^{n+1},-\Delta\phi^{n+1})\\
+     &+(2\phi^{n+1}-\phi^n,-\Delta(2\phi^{n+1}-\phi^n)))+\frac{1}{2}\left((r^{n+1})^2+(2r^{n+1}-r^n)^2\right),
+  \end{split}
+\end{equation}
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{SAV Versions of Several Discrete Formats}
+    \begin{frame}
+\frametitle{SAV/Crank-Nicolson}
+
+A semi-implicit second-order SAV scheme based on Crank–Nicolson is as follows:
+
+\begin{equation}\label{SAV-CN}
+  \begin{split}
+\frac{\phi^{n+1}-\phi^n}{\delta t}&=\Delta\mu^{n+1/2},\\
+\mu^{n+1/2}=&-\Delta\frac{1}{2}(\phi^{n+1}+\phi^n)+\frac{r^{n+1}+r^n}{2\sqrt{E_1[\overline{\phi}^{n+1/2}]+C_0}}F'(\overline{\phi}^{n+1/2}),\\
+\frac{r^{n+1}-r^n}{\delta t}&=\int_{\Omega}\frac{F'(\overline{\phi}^{n+1/2})}{2\sqrt{E_1[\overline{\phi}^{n+1/2}]+C_0}}\frac{\phi^{n+1}-\phi^n}{\delta t} dx.
+  \end{split}
+\end{equation}
+where $\overline{\phi}^{n+1/2}$ is any explicit $O(\delta t^2)$ approximation for $\Phi^{n+1/2}$.
+        %\footfullcite{bib_item}
+
+    \end{frame}
+    
+    \begin{frame}
+\frametitle{SAV/BDF3}
+    
+    \begin{equation}\label{SAV-BDF3}
+  \begin{split}
+&11\phi^{n+1}-18\phi^n+9\phi^{n-1}-2\phi^{n-2}=6\delta t\Delta\mu^{n+1},\\
+&\mu^{n+1}=-\Delta\phi^{n+1}+\frac{r^{n+1}}{\sqrt{E_1[\overline{\phi}^{n+1}]+C_0}}F'(\overline{\phi}^{n+1}),\\
+&11r^{n+1}-18r^n+9r^{n-1}-2r^{n-2}=\\
+&\int_{\Omega}\frac{F'(\overline{\phi}^{n+1})}{2\sqrt{E_1[\overline{\phi}^{n+1}]+C_0}}(11\phi^{n+1}-18\phi^n+9\phi^{n-1}-2\phi^{n-2})dx.
+  \end{split}
+\end{equation}
+
+where $\overline{\phi}^{n+1}$ is any explicit $O(\delta t^2)$ approximation for $\Phi^{n+1}$.
+    \end{frame}
+    
+    \begin{frame}
+\frametitle{SAV/BDF3}
+
+    To obtain $\overline{\phi}^{n+1}$ in BDF3, we can use the extrapolation (BDF3A):
+    $$
+    \overline{\phi}^{n+1}=3\phi^n-3\phi^{n-1}+\phi^{n-2},
+    $$
+    or prediction by one BDF2 step (BDF3B):
+    $$
+    \overline{\phi}^{n+1}=BDF2\left\{\phi^n,\phi^{n-1},\Delta t\right\}.
+    $$
+    It is noticed that using the prediction with a lower order BDF step will double the total
+computation cost.
+    \end{frame}
+\section{Advantage of SAV}
+\begin{frame}
+\frametitle{Advantage of SAV}
+We presented the SAV approach for gradient flows, which is inspired by the Lagrange multiplier/IEQ methods. It preserves many of their advantages, plus:
+\begin{itemize}
+  \item It leads to linear, decoupled equations with CONSTANT coefficients. So fast direct solvers are often available!
+  \item It only requires the nonlinear energy functional, instead of nonlinear energy density, be bounded from below, so it applies to a larger class of gradient flows.
+  \item For gradient flows with multiple components, the scheme will lead to decoupled equations with constant coefficients to solve at each time step.
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{itemize}
+  \item A particular advantage of unconditionally energy stable scheme is that it can be coupled with an adaptive time stepping strategy.
+  \item The proofs are based on variational formulation with simple test functions, so that they can be extended to full discrete discretization with Galerkin approximation in space.
+  \item We have performed rigorous error analysis to show that, under mild conditions, the solution of proposed schemes converge to the solution of the original problem.
+\end{itemize}
+\end{frame}
+
+\section{Disadvantage of SAV}
+
+    \begin{frame}
+\frametitle{Disadvantage of SAV}
+    \begin{itemize}
+      \item Restrictions on the free energy
+      \item Extrapolation scheme
+      \item Convergence and error analysis
+    \end{itemize}
+
+        %\footfullcite{bib_item}
+
+    \end{frame}
+\section{Numerical result}
+    \begin{frame}
+
+        neirong8
+        %\footfullcite{bib_item}
+
+    \end{frame}
+\section{Improvement of SAV}
+\end{document}
