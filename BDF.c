@@ -93,7 +93,6 @@ PetscErrorCode cal_BDF_coef(PetscScalar *BDF_coef, PetscInt order){
 #undef __FUNCT__
 #define __FUNCT__ "cal_ex_coef"
 PetscErrorCode cal_ex_coef(PetscScalar *ex_coef, PetscInt order){
-	//PetscPrintf(PETSC_COMM_WORLD, "cal_ex_coef in\n");
 	PetscInt i, j, l;
 	for (i = 0; i < order; ++i){
 		ex_coef[i] = 0.0;
@@ -112,6 +111,5 @@ PetscErrorCode cal_ex_coef(PetscScalar *ex_coef, PetscInt order){
 		PetscPrintf(PETSC_COMM_WORLD, "ex_coef[%d] = %g\n", i, ex_coef[i]);
 	}
 	*/
-	//PetscPrintf(PETSC_COMM_WORLD, "cal_ex_coef out\n");
 	PetscFunctionReturn(0);
 }

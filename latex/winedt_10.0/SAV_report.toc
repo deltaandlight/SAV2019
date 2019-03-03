@@ -1,8 +1,19 @@
-\beamer@endinputifotherversion {3.14pt}
-\beamer@sectionintoc {1}{Chinese}{3}{0}{1}
-\beamer@sectionintoc {2}{Introduction of Gradient Flow}{8}{0}{2}
-\beamer@sectionintoc {3}{Different method}{10}{0}{3}
-\beamer@sectionintoc {4}{SAV Versions of Several Discrete Formats}{22}{0}{4}
-\beamer@sectionintoc {5}{Advantage of SAV}{25}{0}{5}
-\beamer@sectionintoc {6}{Disadvantage of SAV}{27}{0}{6}
-\beamer@sectionintoc {7}{Numerical result}{28}{0}{7}
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\beamer@endinputifotherversion {3.36pt}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {1}{Analysis of numerical methods}{3}{0}{1}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {2}{Introduction of Gradient Flow}{6}{0}{2}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {3}{Different method to solve Gradient Flow}{7}{0}{3}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {4}{SAV Versions of Several Discrete Formats}{20}{0}{4}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {5}{Advantage and Disadvantage of SAV}{23}{0}{5}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {6}{Numerical result}{26}{0}{6}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {7}{Improvement of SAV}{28}{0}{7}
+\defcounter {refsection}{0}\relax 
+\beamer@sectionintoc {8}{Reference}{29}{0}{8}

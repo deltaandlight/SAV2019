@@ -1,9 +1,15 @@
 \documentclass{beamer}
 \usepackage{amsfonts}
-%\usepackage{times}
 
-%\usepackage[backend=bibtex,sorting=none]{biblatex}
-%\addbibresource{SAV_report.bib}
+\usepackage{graphicx}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+\addbibresource{SAV_report.bib}
+\setbeamertemplate{bibliography item}[text]
+
 \title{Introduction of SAV method}
 \author{Liang Zeng}
 \begin{document}
@@ -14,40 +20,32 @@
   \tableofcontents
 \end{frame}
 %\section{数值方法的评判标准}
-\section{Chinese}
+\section{Analysis of numerical methods}
+
     \begin{frame}
-    \frametitle{Stability}
+    \frametitle{Convergence ,Error, Existence \\and Uniqueness of solution}
 
-Consistent dependence on initial and boundary values.
-
+	\begin{itemize}
+	\item Linear equation: \\
+	Lax Theorem: Constancy = Convergence\\
+	 when Compatibility
+	\item Nonlinear equation: ?
+	\end{itemize}
+	
         %\footfullcite{bib_item}
 
     \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
-    \frametitle{Existence and uniqueness of solution}
+    \frametitle{Physical property}
+Dissipation: Energy analysis method
 
-        neirong2
+Other conservative properties
         %\footfullcite{bib_item}
 
     \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{frame}
-    \frametitle{Dissipation}
 
-        Energy analysis method
-        %\footfullcite{bib_item}
-
-    \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{frame}
-    \frametitle{Convergence and Error}
-
-        neirong2
-        %\footfullcite{bib_item}
-
-    \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
     \frametitle{Computational overhead}
 
@@ -74,19 +72,13 @@ Consistent dependence on initial and boundary values.
 
     \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{frame}
 
-        neirong2
-        %\footfullcite{bib_item}
-
-    \end{frame}
-
-\section{Different method}
+\section{Different method to solve Gradient Flow}
 
     \begin{frame}
     \frametitle{Convex splitting approach}
 
-A very popular approach for gradient flow is the so called convex splitting method which appears to be introduced by 9 and popularized by 10. Assuming the free energy density $F(\phi)$ can be split as the difference of two convex functions, namely, $F(\phi)=F_c(\phi)-−F_e(\phi)$ with $F''_c(\phi), F''_e(\phi)\geq 0.$
+A very popular approach for gradient flow is the so called convex splitting method which appears to be introduced by \cite{doi:10.1137/0730084} and popularized by \cite{Eyre199839}. Assuming the free energy density $F(\phi)$ can be split as the difference of two convex functions, namely, $F(\phi)=F_c(\phi)-−F_e(\phi)$ with $F''_c(\phi), F''_e(\phi)\geq 0.$
 
  Then, the first-order convex splitting scheme reads:
 
@@ -115,7 +107,7 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
     \frametitle{Stabilized approach}
-The main idea is to introduce an artificial stabilization term to balance the explicit treatment of the nonlinear term. A first-order stabilized scheme for \ref{GFlow} reads:
+Another widely used approach is the stabilized scheme, introduced in \cite{Zhu19993564} (see also \cite{Shen20101669}). The main idea is to introduce an artificial stabilization term to balance the explicit treatment of the nonlinear term. A first-order stabilized scheme for \ref{GFlow} reads:
 
 \begin{equation}\label{Stabilized approach}
   \begin{split}
@@ -131,8 +123,19 @@ where S is a suitable stabilization parameter. It is shown in [18] that, under t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
     \frametitle{Invariant energy quadratization (IEQ) approaches}
+	
+The approach is proposed in \cite{Guillén-gonzález2013140} for dealing with Allen–Cahn and Cahn–Hilliard equations with double well free energy. It is based on a Lagrange multiplier approach introduced in \cite{Badia20111686}.
 
+%It can lead to unconditionally energy stable, linear, second-order schemes for Allen–Cahn and Cahn–Hilliard equations with double-well free energies. However, it cannot be easily extended to deal with other free energies. 
+
+Very recently, X. Yang and his collaborators \cite{Yang2016294}, \cite{Yang2017691}, \cite{Yang2017104}, \cite{Yu2017665}, \cite{Zhao2017803}, \cite{Yang20171005}, \cite{doi:10.1142/S0218202517500373} made a big leap in generalizing the Lagrange multiplier approach to the so called invariant energy quadratization (IEQ) approach which is applicable to a large class of free energies.	
+	
 Assuming that there exists $C_0 \geq 0$ such that $F(\phi) \geq -C_0$, one then introduces a Lagrange multiplier (auxiliary variable) $q(t,x;\phi)=\sqrt{F(\phi)+C_0}$, and rewrite the equation as
+	\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Invariant energy quadratization (IEQ) approaches}
 
 \begin{equation}\label{IEQ}
   \begin{split}
@@ -192,7 +195,7 @@ $$
 r(t)=\sqrt{E_1(\phi)+C_0}.
 $$
 
-Then, \ref{GFlow} can be rewritten as:
+Then, (\ref{GFlow}) can be rewritten as:
 
 \begin{equation}\label{SAV}
   \begin{split}
@@ -348,7 +351,7 @@ where $\overline{\phi}^{n+1}$ is any explicit $O(\delta t^2)$ approximation for 
     It is noticed that using the prediction with a lower order BDF step will double the total
 computation cost.
     \end{frame}
-\section{Advantage of SAV}
+\section{Advantage and Disadvantage of SAV}
 \begin{frame}
 \frametitle{Advantage of SAV}
 We presented the SAV approach for gradient flows, which is inspired by the Lagrange multiplier/IEQ methods. It preserves many of their advantages, plus:
@@ -360,15 +363,14 @@ We presented the SAV approach for gradient flows, which is inspired by the Lagra
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+\frametitle{Advantage of SAV}
 \begin{itemize}
   \item A particular advantage of unconditionally energy stable scheme is that it can be coupled with an adaptive time stepping strategy.
   \item The proofs are based on variational formulation with simple test functions, so that they can be extended to full discrete discretization with Galerkin approximation in space.
-  \item We have performed rigorous error analysis to show that, under mild conditions, the solution of proposed schemes converge to the solution of the original problem.
+  \item We have performed rigorous error analysis to show that, under mild conditions, the solution of proposed schemes converge to the solution of the original problem.\cite{doi:10.1137/17M1159968}
 \end{itemize}
 \end{frame}
-
-\section{Disadvantage of SAV}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
 \frametitle{Disadvantage of SAV}
     \begin{itemize}
@@ -381,11 +383,45 @@ We presented the SAV approach for gradient flows, which is inspired by the Lagra
 
     \end{frame}
 \section{Numerical result}
-    \begin{frame}
+    \begin{frame}[allowframebreaks]
+    \frametitle{Numerical result}
 
-        neirong8
-        %\footfullcite{bib_item}
+    Example: Evolutions of coarsening process and of energy
+    
+    In this example, we simulate the Cahn-–Hilliard equation on $[0,2\pi)^2$, starting from
+\begin{equation}
+\phi(x,y,0)=0.25+0.4\textbf{Rand}(x,y)
+\end{equation}
+We choose $\beta=4$, $C_0=0$ and discretize the space by the Fourier spectral method with $256\times 256$ modes.
 
+We investigate the coarsening process with $\epsilon^2=0.01$ and $\delta t=2\times 10^{-5}$. The reference solution and the results of SAV/BDF2 are shown in Fig.\ref{fig:1}, no visible difference is observed.
+        
+\begin{figure}[htb]%%图
+	\centering  %插入的图片居中表示
+	\includegraphics[width=0.7\linewidth]{ex1.jpg}  %插入的图，包括JPG,PNG,PDF,EPS等，放在源文件目录下
+	\caption{Coarsening process with SAV/BDF2.}  %图片的名称
+	\label{fig:1}   %标签，用作引用
+\end{figure}
+
+%\footfullcite{bib_item}
     \end{frame}
 \section{Improvement of SAV}
+    \begin{frame}
+    \frametitle{Improvement of SAV}
+
+    \begin{itemize}
+      \item BDF4C, BDF4D?
+      \item ?
+      \item ?
+    \end{itemize}
+    %\footfullcite{bib_item}
+
+    \end{frame}
+    
+\section{Reference}
+    \begin{frame}[allowframebreaks]
+\frametitle{Reference}
+    \printbibliography
+
+    \end{frame}
 \end{document}

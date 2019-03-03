@@ -1,0 +1,514 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.6 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{doi:10.1137/0730084}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Elliott}{E.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Stuart}{S.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ECSA1}
+  \strng{fullhash}{ECSA1}
+  \verb{doi}
+  \verb 10.1137/0730084
+  \endverb
+  \verb{eprint}
+  \verb https://doi.org/10.1137/0730084
+  \endverb
+  \field{number}{6}
+  \field{pages}{1622\bibrangedash 1663}
+  \field{title}{The Global Dynamics of Discrete Semilinear Parabolic Equations}
+  \verb{url}
+  \verb https://doi.org/10.1137/0730084
+  \endverb
+  \field{volume}{30}
+  \field{journaltitle}{SIAM Journal on Numerical Analysis}
+  \field{year}{1993}
+\endentry
+
+\entry{Eyre199839}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Eyre}{E.}%
+     {David~J.}{D.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{EDJ1}
+  \strng{fullhash}{EDJ1}
+  \field{note}{cited By 157}
+  \field{pages}{39\bibrangedash 46}
+  \field{title}{Unconditionally gradient stable time marching the Cahn-Hilliard
+  equation}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-0032321134&partnerI
+  \verb D=40&md5=c4e46ec1e406a0dac18bf0b43f479fe9
+  \endverb
+  \field{volume}{529}
+  \field{journaltitle}{Materials Research Society Symposium - Proceedings}
+  \field{year}{1998}
+\endentry
+
+\entry{Zhu19993564}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Zhu}{Z.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chen}{C.}%
+     {L.-Q.}{L.-Q.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shen}{S.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tikare}{T.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZJ+2}
+  \strng{fullhash}{ZJCLQSJTV1}
+  \verb{doi}
+  \verb 10.1103/PhysRevE.60.3564
+  \endverb
+  \field{note}{cited By 272}
+  \field{number}{4}
+  \field{pages}{3564\bibrangedash 3572}
+  \field{title}{Coarsening kinetics from a variable-mobility cahn-hilliard
+  equation: Application of a semi-implicit fourier spectral method}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-0000707473&doi=10.1
+  \verb 103%2fPhysRevE.60.3564&partnerID=40&md5=15be1e4eaf692db7d2124aa4edb2206
+  \verb 2
+  \endverb
+  \field{volume}{60}
+  \field{journaltitle}{Physical Review E - Statistical Physics, Plasmas,
+  Fluids, and Related Interdisciplinary Topics}
+  \field{year}{1999}
+\endentry
+
+\entry{Shen20101669}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Shen}{S.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yang}{Y.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SJYX1}
+  \strng{fullhash}{SJYX1}
+  \verb{doi}
+  \verb 10.3934/dcds.2010.28.1669
+  \endverb
+  \field{note}{cited By 177}
+  \field{number}{4}
+  \field{pages}{1669\bibrangedash 1691}
+  \field{title}{Numerical approximations of allen-cahn and cahn-hilliard
+  equations}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-77957918727&doi=10.
+  \verb 3934%2fdcds.2010.28.1669&partnerID=40&md5=e65a742b562bc14cc0a1336341237
+  \verb a8f
+  \endverb
+  \field{volume}{28}
+  \field{journaltitle}{Discrete and Continuous Dynamical Systems}
+  \field{year}{2010}
+\endentry
+
+\entry{Guillén-gonzález2013140}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Guillén-gonzález}{G.-g.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tierra}{T.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GgFTG1}
+  \strng{fullhash}{GgFTG1}
+  \verb{doi}
+  \verb 10.1016/j.jcp.2012.09.020
+  \endverb
+  \field{note}{cited By 43}
+  \field{number}{1}
+  \field{pages}{140\bibrangedash 171}
+  \field{title}{On linear schemes for a cahn-hilliard diffuse interface model}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-84870538130&doi=10.
+  \verb 1016%2fj.jcp.2012.09.020&partnerID=40&md5=62937e68204bc7cdfc0dd52da544a
+  \verb 484
+  \endverb
+  \field{volume}{234}
+  \field{journaltitle}{Journal of Computational Physics}
+  \field{year}{2013}
+\endentry
+
+\entry{Badia20111686}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Badia}{B.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guillén-González}{G.-G.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gutiérrez-Santacreu}{G.-S.}%
+     {J.V.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BSGGFGSJ1}
+  \strng{fullhash}{BSGGFGSJ1}
+  \verb{doi}
+  \verb 10.1016/j.jcp.2010.11.033
+  \endverb
+  \field{note}{cited By 19}
+  \field{number}{4}
+  \field{pages}{1686\bibrangedash 1706}
+  \field{title}{Finite element approximation of nematic liquid crystal flows
+  using a saddle-point structure}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-78650568203&doi=10.
+  \verb 1016%2fj.jcp.2010.11.033&partnerID=40&md5=fd563e70af2e5e364ffcd04ac0ed3
+  \verb 28f
+  \endverb
+  \field{volume}{230}
+  \field{journaltitle}{Journal of Computational Physics}
+  \field{year}{2011}
+\endentry
+
+\entry{Yang2016294}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Yang}{Y.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{YX1}
+  \strng{fullhash}{YX1}
+  \verb{doi}
+  \verb 10.1016/j.jcp.2016.09.029
+  \endverb
+  \field{note}{cited By 35}
+  \field{pages}{294\bibrangedash 316}
+  \field{title}{Linear, first and second-order, unconditionally energy stable
+  numerical schemes for the phase field model of homopolymer blends}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-84988916643&doi=10.
+  \verb 1016%2fj.jcp.2016.09.029&partnerID=40&md5=e285d30dc1c5d4246baaf1db0c315
+  \verb fc8
+  \endverb
+  \field{volume}{327}
+  \field{journaltitle}{Journal of Computational Physics}
+  \field{year}{2016}
+\endentry
+
+\entry{Yang2017691}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Yang}{Y.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ju}{J.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{YXJL1}
+  \strng{fullhash}{YXJL1}
+  \verb{doi}
+  \verb 10.1016/j.cma.2016.10.041
+  \endverb
+  \field{note}{cited By 30}
+  \field{pages}{691\bibrangedash 712}
+  \field{title}{Efficient linear schemes with unconditional energy stability
+  for the phase field elastic bending energy model}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-85003422191&doi=10.
+  \verb 1016%2fj.cma.2016.10.041&partnerID=40&md5=4e00dffa7aefc938a621604de16cc
+  \verb e21
+  \endverb
+  \field{volume}{315}
+  \field{journaltitle}{Computer Methods in Applied Mechanics and Engineering}
+  \field{year}{2017}
+\endentry
+
+\entry{Yang2017104}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Yang}{Y.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhao}{Z.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wang}{W.}%
+     {Q.}{Q.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{YXZJWQ1}
+  \strng{fullhash}{YXZJWQ1}
+  \verb{doi}
+  \verb 10.1016/j.jcp.2016.12.025
+  \endverb
+  \field{note}{cited By 28}
+  \field{pages}{104\bibrangedash 127}
+  \field{title}{Numerical approximations for the molecular beam epitaxial
+  growth model based on the invariant energy quadratization method}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-85008879638&doi=10.
+  \verb 1016%2fj.jcp.2016.12.025&partnerID=40&md5=412203253ec6fad16da1ff0da8387
+  \verb 2d8
+  \endverb
+  \field{volume}{333}
+  \field{journaltitle}{Journal of Computational Physics}
+  \field{year}{2017}
+\endentry
+
+\entry{Yu2017665}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Yu}{Y.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yang}{Y.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{YHYX1}
+  \strng{fullhash}{YHYX1}
+  \verb{doi}
+  \verb 10.1016/j.jcp.2017.01.026
+  \endverb
+  \field{note}{cited By 17}
+  \field{pages}{665\bibrangedash 686}
+  \field{title}{Numerical approximations for a phase-field moving contact line
+  model with variable densities and viscosities}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-85010289968&doi=10.
+  \verb 1016%2fj.jcp.2017.01.026&partnerID=40&md5=96c02deb5b12f218f0082115aeb92
+  \verb cb7
+  \endverb
+  \field{volume}{334}
+  \field{journaltitle}{Journal of Computational Physics}
+  \field{year}{2017}
+\endentry
+
+\entry{Zhao2017803}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Zhao}{Z.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yang}{Y.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gong}{G.}%
+     {Y.}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wang}{W.}%
+     {Q.}{Q.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZJ+1}
+  \strng{fullhash}{ZJYXGYWQ1}
+  \verb{doi}
+  \verb 10.1016/j.cma.2017.01.031
+  \endverb
+  \field{note}{cited By 23}
+  \field{pages}{803\bibrangedash 825}
+  \field{title}{A novel linear second order unconditionally energy stable
+  scheme for a hydrodynamic Q-tensor model of liquid crystals}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-85014165227&doi=10.
+  \verb 1016%2fj.cma.2017.01.031&partnerID=40&md5=a17679a798ef871261b4d482beb50
+  \verb e90
+  \endverb
+  \field{volume}{318}
+  \field{journaltitle}{Computer Methods in Applied Mechanics and Engineering}
+  \field{year}{2017}
+\endentry
+
+\entry{Yang20171005}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Yang}{Y.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ju}{J.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{YXJL1}
+  \strng{fullhash}{YXJL1}
+  \verb{doi}
+  \verb 10.1016/j.cma.2017.02.011
+  \endverb
+  \field{note}{cited By 22}
+  \field{pages}{1005\bibrangedash 1029}
+  \field{title}{Linear and unconditionally energy stable schemes for the binary
+  fluid–surfactant phase field model}
+  \verb{url}
+  \verb https://www.scopus.com/inward/record.uri?eid=2-s2.0-85014457724&doi=10.
+  \verb 1016%2fj.cma.2017.02.011&partnerID=40&md5=0cf2d76e7653ac544ae9235574e46
+  \verb 8ff
+  \endverb
+  \field{volume}{318}
+  \field{journaltitle}{Computer Methods in Applied Mechanics and Engineering}
+  \field{year}{2017}
+\endentry
+
+\entry{doi:10.1142/S0218202517500373}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Yang}{Y.}%
+     {Xiaofeng}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhao}{Z.}%
+     {Jia}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wang}{W.}%
+     {Qi}{Q.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shen}{S.}%
+     {Jie}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{YX+1}
+  \strng{fullhash}{YXZJWQSJ1}
+  \field{abstract}{%
+  How to develop efficient numerical schemes while preserving energy stability
+  at the discrete level is challenging for the three-component Cahn–Hilliard
+  phase-field model. In this paper, we develop a set of first- and second-order
+  temporal approximation schemes based on a novel “Invariant Energy
+  Quadratization” approach, where all nonlinear terms are treated
+  semi-explicitly. Consequently, the resulting numerical schemes lead to
+  well-posed linear systems with a linear symmetric, positive definite at each
+  time step. We prove that the developed schemes are unconditionally energy
+  stable and present various 2D and 3D numerical simulations to demonstrate the
+  stability and the accuracy of the schemes.%
+  }
+  \verb{doi}
+  \verb 10.1142/S0218202517500373
+  \endverb
+  \verb{eprint}
+  \verb https://doi.org/10.1142/S0218202517500373
+  \endverb
+  \field{number}{11}
+  \field{pages}{1993\bibrangedash 2030}
+  \field{title}{Numerical approximations for a three-component Cahn–Hilliard
+  phase-field model based on the invariant energy quadratization method}
+  \verb{url}
+  \verb https://doi.org/10.1142/S0218202517500373
+  \endverb
+  \field{volume}{27}
+  \field{journaltitle}{Mathematical Models and Methods in Applied Sciences}
+  \field{year}{2017}
+\endentry
+
+\entry{doi:10.1137/17M1159968}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Shen}{S.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Xu}{X.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SJXJ1}
+  \strng{fullhash}{SJXJ1}
+  \verb{doi}
+  \verb 10.1137/17M1159968
+  \endverb
+  \verb{eprint}
+  \verb https://doi.org/10.1137/17M1159968
+  \endverb
+  \field{number}{5}
+  \field{pages}{2895\bibrangedash 2912}
+  \field{title}{Convergence and Error Analysis for the Scalar Auxiliary
+  Variable (SAV) Schemes to Gradient Flows}
+  \verb{url}
+  \verb https://doi.org/10.1137/17M1159968
+  \endverb
+  \field{volume}{56}
+  \field{journaltitle}{SIAM Journal on Numerical Analysis}
+  \field{year}{2018}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput
