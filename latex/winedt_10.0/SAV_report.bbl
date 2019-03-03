@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex version 2.6 $
+% $ biblatex version 1.7 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -15,6 +15,39 @@
       \aftergroup\endinput}
   {}
 \endgroup
+
+\entry{doi:10.1137/17M1159968}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Shen}{S.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Xu}{X.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SJXJ1}
+  \strng{fullhash}{SJXJ1}
+  \verb{doi}
+  \verb 10.1137/17M1159968
+  \endverb
+  \verb{eprint}
+  \verb https://doi.org/10.1137/17M1159968
+  \endverb
+  \field{number}{5}
+  \field{pages}{2895\bibrangedash 2912}
+  \field{title}{Convergence and Error Analysis for the Scalar Auxiliary
+  Variable (SAV) Schemes to Gradient Flows}
+  \verb{url}
+  \verb https://doi.org/10.1137/17M1159968
+  \endverb
+  \field{volume}{56}
+  \field{journaltitle}{SIAM Journal on Numerical Analysis}
+  \field{year}{2018}
+\endentry
 
 \entry{doi:10.1137/0730084}{article}{}
   \name{author}{2}{}{%
@@ -475,37 +508,81 @@
   \field{year}{2017}
 \endentry
 
-\entry{doi:10.1137/17M1159968}{article}{}
-  \name{author}{2}{}{%
+\entry{SHEN2018407}{article}{}
+  \name{author}{3}{}{%
     {{}%
      {Shen}{S.}%
-     {J.}{J.}%
+     {Jie}{J.}%
      {}{}%
      {}{}}%
     {{}%
      {Xu}{X.}%
-     {J.}{J.}%
+     {Jie}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yang}{Y.}%
+     {Jiang}{J.}%
      {}{}%
      {}{}}%
   }
-  \strng{namehash}{SJXJ1}
-  \strng{fullhash}{SJXJ1}
+  \keyw{Gradient flows, Unconditionally energy stability, Cahn–Hilliard
+  equation}
+  \strng{namehash}{SJXJYJ1}
+  \strng{fullhash}{SJXJYJ1}
+  \field{abstract}{%
+  We propose a new approach, which we term as scalar auxiliary variable (SAV)
+  approach, to construct efficient and accurate time discretization schemes for
+  a large class of gradient flows. The SAV approach is built upon the recently
+  introduced IEQ approach. It enjoys all advantages of the IEQ approach but
+  overcomes most of its shortcomings. In particular, the SAV approach leads to
+  numerical schemes that are unconditionally energy stable and extremely
+  efficient in the sense that only decoupled equations with constant
+  coefficients need to be solved at each time step. The scheme is not
+  restricted to specific forms of the nonlinear part of the free energy, so it
+  applies to a large class of gradient flows. Numerical results are presented
+  to show that the accuracy and effectiveness of the SAV approach over the
+  existing methods.%
+  }
   \verb{doi}
-  \verb 10.1137/17M1159968
+  \verb https://doi.org/10.1016/j.jcp.2017.10.021
   \endverb
-  \verb{eprint}
-  \verb https://doi.org/10.1137/17M1159968
-  \endverb
-  \field{number}{5}
-  \field{pages}{2895\bibrangedash 2912}
-  \field{title}{Convergence and Error Analysis for the Scalar Auxiliary
-  Variable (SAV) Schemes to Gradient Flows}
+  \field{issn}{0021-9991}
+  \field{pages}{407 \bibrangedash  416}
+  \field{title}{The scalar auxiliary variable (SAV) approach for gradient
+  flows}
   \verb{url}
-  \verb https://doi.org/10.1137/17M1159968
+  \verb http://www.sciencedirect.com/science/article/pii/S002199911730774X
   \endverb
-  \field{volume}{56}
-  \field{journaltitle}{SIAM Journal on Numerical Analysis}
+  \field{volume}{353}
+  \field{journaltitle}{Journal of Computational Physics}
   \field{year}{2018}
+\endentry
+
+\entry{article}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Shen}{S.}%
+     {Jie}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Xu}{X.}%
+     {Jie}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yang}{Y.}%
+     {Jiang}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SJXJYJ1}
+  \strng{fullhash}{SJXJYJ1}
+  \field{title}{A new class of efficient and robust energy stable schemes for
+  gradient flows}
+  \field{month}{10}
+  \field{year}{2017}
 \endentry
 
 \lossort

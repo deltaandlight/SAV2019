@@ -10,7 +10,7 @@
 \addbibresource{SAV_report.bib}
 \setbeamertemplate{bibliography item}[text]
 
-\title{Introduction of SAV method}
+\title{Introduction of the\\ scalar auxiliary variable \\(SAV) approach method}
 \author{Liang Zeng}
 \begin{document}
 
@@ -23,13 +23,13 @@
 \section{Analysis of numerical methods}
 
     \begin{frame}
-    \frametitle{Convergence ,Error, Existence \\and Uniqueness of solution}
+    \frametitle{Existence, Uniqueness, Convergence \\and Error of solution}
 
 	\begin{itemize}
 	\item Linear equation: \\
-	Lax Theorem: Constancy = Convergence\\
-	 when Compatibility
-	\item Nonlinear equation: ?
+	Lax Theorem: Stability = Convergence\\
+	 when Compatibility;
+	\item Nonlinear equation: Gradient Flow\cite{doi:10.1137/17M1159968};
 	\end{itemize}
 	
         %\footfullcite{bib_item}
@@ -37,10 +37,12 @@
     \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
-    \frametitle{Physical property}
-Dissipation: Energy analysis method
-
-Other conservative properties
+    \frametitle{Other necessary property}
+    \begin{itemize}
+    \item Dissipation: Energy analysis method;
+    \item Boundary limitation: Dangerous Extrapolation Method;
+    \item Direction of propagation: Characteristic line/Upwind scheme
+    \end{itemize}
         %\footfullcite{bib_item}
 
     \end{frame}
@@ -48,12 +50,13 @@ Other conservative properties
 
     \begin{frame}
     \frametitle{Computational overhead}
-
-        linear?
-
-    Constant/variable coefficients?
-
-    Parallelism?
+\begin{itemize}
+\item linear?
+\item Constant/variable coefficients?\\
+Constant preconditioner;
+\item Parallelism?\\
+Local/Global computation: Inner product/convolution;
+\end{itemize}
         %\footfullcite{bib_item}
 
     \end{frame}
@@ -72,7 +75,15 @@ Other conservative properties
 
     \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\begin{frame}
+\frametitle{Example of Gradient Flow}
+\begin{itemize}
+\item Allen--Cahn Equation
+\item Cahn-–Hilliard Equation
+\item Phase Field Crystal Equation
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Different method to solve Gradient Flow}
 
     \begin{frame}
@@ -84,7 +95,7 @@ A very popular approach for gradient flow is the so called convex splitting meth
 
 \begin{equation}\label{Convex}
   \begin{split}
-     \frac{\phi^{n+1}-\phi^n}{\delta t}&=\delta \mu^{n+1},\\
+     \frac{\phi^{n+1}-\phi^n}{\delta t}&=\Delta \mu^{n+1},\\
      \mu^{n+1} = -\Delta\phi^{n+1}&+(F'_c(\phi^{n+1})-F'_e(\phi^n)).
   \end{split}
 \end{equation}
@@ -93,6 +104,12 @@ A very popular approach for gradient flow is the so called convex splitting meth
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
     \frametitle{Convex splitting approach}
+    $$
+    F_c(\phi^{n+1})-F_c(\phi^n)\leq(\phi^{n+1}-\phi^n)F_c'(\phi^{n+1}),
+    $$
+    $$
+    F_e(\phi^{n+1})-F_e(\phi^n)\geq(\phi^{n+1}-\phi^n)F_e'(\phi^{n}),
+    $$
 One can easily show that the above scheme is unconditionally energy stable in the sense that
 
 $$
@@ -116,15 +133,16 @@ Another widely used approach is the stabilized scheme, introduced in \cite{Zhu19
   \end{split}
 \end{equation}
 
-where S is a suitable stabilization parameter. It is shown in [18] that, under the assumption $\Vert F''(\phi)\Vert_\infty\leq L$, the above scheme is unconditionally stable for all $S \geq L_2$.
+where S is a suitable stabilization parameter. It is shown in [18] that, under the assumption $\Vert F''(\phi)\Vert_\infty\leq L$, the above scheme is unconditionally stable for all $S \geq \frac{L}{2}$.
         %\footfullcite{bib_item}
 
     \end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
     \frametitle{Invariant energy quadratization (IEQ) approaches}
 	
-The approach is proposed in \cite{Guillén-gonzález2013140} for dealing with Allen–Cahn and Cahn–Hilliard equations with double well free energy. It is based on a Lagrange multiplier approach introduced in \cite{Badia20111686}.
+The approach is proposed in \cite{Guillén-gonzález2013140} for dealing with Allen-–Cahn and Cahn–-Hilliard equations with double well free energy. It is based on a Lagrange multiplier approach introduced in \cite{Badia20111686}.
 
 %It can lead to unconditionally energy stable, linear, second-order schemes for Allen–Cahn and Cahn–Hilliard equations with double-well free energies. However, it cannot be easily extended to deal with other free energies. 
 
@@ -238,6 +256,7 @@ where $\overline{\phi}^{n+1}$ is any explicit $O(\delta t^2)$ approximation for 
     \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
+\frametitle{The scalar auxiliary variable (SAV) approach}
 
 We can eliminate $\mu^{n+1}$ and $r^{n+1}$ from (\ref{SAV-BDF2}) to obtain
 
@@ -247,6 +266,10 @@ We can eliminate $\mu^{n+1}$ and $r^{n+1}$ from (\ref{SAV-BDF2}) to obtain
    -r^{n-1}+\int_{\Omega}\frac{F'(\overline{\phi}^{n+1})}{2\sqrt{E_1[\overline{\phi}^{n+1}]+C_0}}&(3\phi^{n+1}-4\phi^n+\phi^{n-1})dx).
 \end{split}
 \end{equation}
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+\frametitle{The scalar auxiliary variable (SAV) approach}
 Denote
 \begin{equation}\label{bn}
   \begin{split}
@@ -262,7 +285,7 @@ g^n&=\frac{1}{3}(4\phi^n-3\phi^{n-1})\\
     \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
-
+\frametitle{The scalar auxiliary variable (SAV) approach}
 We can get
 
 \begin{equation}\label{3.7}
@@ -340,17 +363,66 @@ where $\overline{\phi}^{n+1}$ is any explicit $O(\delta t^2)$ approximation for 
     \begin{frame}
 \frametitle{SAV/BDF3}
 
-    To obtain $\overline{\phi}^{n+1}$ in BDF3, we can use the extrapolation (BDF3A):
+    To obtain $\overline{\phi}^{n+1}$ in BDF3, we can use the extrapolation (called BDF3A):
     $$
     \overline{\phi}^{n+1}=3\phi^n-3\phi^{n-1}+\phi^{n-2},
     $$
-    or prediction by one BDF2 step (BDF3B):
+    or prediction by one BDF2 step (called BDF3B):
     $$
     \overline{\phi}^{n+1}=BDF2\left\{\phi^n,\phi^{n-1},\Delta t\right\}.
     $$
     It is noticed that using the prediction with a lower order BDF step will double the total
 computation cost.
     \end{frame}
+    
+\section{Numerical result}
+\begin{frame}[allowframebreaks]
+    \frametitle{Numerical result}
+
+    Example.1: Evolutions of coarsening process and of energy\cite{SHEN2018407}
+    
+    In this example, we simulate the Cahn-–Hilliard equation on $[0,2\pi)^2$, starting from
+\begin{equation}
+\phi(x,y,0)=0.25+0.4\textbf{Rand}(x,y)
+\end{equation}
+We choose $\beta=4$, $C_0=0$ and discretize the space by the Fourier spectral method with $256\times 256$ modes.
+
+We investigate the coarsening process with $\epsilon^2=0.01$ and $\delta t=2\times 10^{-5}$. The reference solution and the results of SAV/BDF2 are shown in Fig.\ref{fig:1}, no visible difference is observed.
+        
+\begin{figure}[htb]%%图
+	\centering  %插入的图片居中表示
+	\includegraphics[width=1\linewidth]{ex1.jpg}  %插入的图，包括JPG,PNG,PDF,EPS等，放在源文件目录下
+	\caption{Coarsening process with SAV/BDF2.}  %图片的名称
+	\label{fig:1}   %标签，用作引用
+\end{figure}
+    
+Example.2: Energy evolutions for BDF3 and BDF4 schemes.\cite{article}
+
+We take Cahn--Hilliard equation as an example to demonstrate the numerical performances of SAV/BDF3 and SAV/BDF4 schemes. We fix the computational domain as $[0,2\pi)^2$ and $\epsilon=0.1$. We use the Fourier Galerkin method for spatial discretization with $N=2^7$. The initial data is $u_0(x,y)=0.05\sin(x)\sin(y)$.
+
+The numerical results are shown in Fig.\ref{fig:2}.
+% We find that BDF4A is unstable, and BDF3A shows oscillations in energy with $\Delta t=10^{-3}$.
+
+\begin{figure}[htb]%%图
+	\centering  %插入的图片居中表示
+	\includegraphics[width=1\linewidth]{ex2.jpg}  %插入的图，包括JPG,PNG,PDF,EPS等，放在源文件目录下
+	\caption{Energy evolutions for BDF3 and BDF4 schemes.}  %图片的名称
+	\label{fig:2}   %标签，用作引用
+\end{figure}
+
+Next, we compare the numerical results of BDF2, BDF3 and BDF4. The energy evolution and the configuration at $t=0.016$ are shown in FIG.\ref{fig:3} (for the first row $\Delta t=10^3$,and for the second row $\Delta t=10^4$).
+
+\begin{figure}[htb]%%图
+	\centering  %插入的图片居中表示
+	\includegraphics[width=1\linewidth]{ex3.jpg}  %插入的图，包括JPG,PNG,PDF,EPS等，放在源文件目录下
+	\caption{Comparison of BDF2, BDF3 and BDF4.}  %图片的名称
+	\label{fig:3}   %标签，用作引用
+\end{figure}
+%\footfullcite{bib_item}
+\end{frame}
+    
+    
+    
 \section{Advantage and Disadvantage of SAV}
 \begin{frame}
 \frametitle{Advantage of SAV}
@@ -374,45 +446,24 @@ We presented the SAV approach for gradient flows, which is inspired by the Lagra
     \begin{frame}
 \frametitle{Disadvantage of SAV}
     \begin{itemize}
-      \item Restrictions on the free energy
-      \item Extrapolation scheme
-      \item Convergence and error analysis
+      \item Restrictions on the free energy;
+      \item Extrapolation scheme of nonlinear part;
+      \item Restrictions on convergence and error analysis\cite{doi:10.1137/17M1159968};
     \end{itemize}
 
         %\footfullcite{bib_item}
 
     \end{frame}
-\section{Numerical result}
-    \begin{frame}[allowframebreaks]
-    \frametitle{Numerical result}
 
-    Example: Evolutions of coarsening process and of energy
-    
-    In this example, we simulate the Cahn-–Hilliard equation on $[0,2\pi)^2$, starting from
-\begin{equation}
-\phi(x,y,0)=0.25+0.4\textbf{Rand}(x,y)
-\end{equation}
-We choose $\beta=4$, $C_0=0$ and discretize the space by the Fourier spectral method with $256\times 256$ modes.
-
-We investigate the coarsening process with $\epsilon^2=0.01$ and $\delta t=2\times 10^{-5}$. The reference solution and the results of SAV/BDF2 are shown in Fig.\ref{fig:1}, no visible difference is observed.
-        
-\begin{figure}[htb]%%图
-	\centering  %插入的图片居中表示
-	\includegraphics[width=0.7\linewidth]{ex1.jpg}  %插入的图，包括JPG,PNG,PDF,EPS等，放在源文件目录下
-	\caption{Coarsening process with SAV/BDF2.}  %图片的名称
-	\label{fig:1}   %标签，用作引用
-\end{figure}
-
-%\footfullcite{bib_item}
-    \end{frame}
-\section{Improvement of SAV}
+\section{Possible Improvement of SAV}
     \begin{frame}
-    \frametitle{Improvement of SAV}
+    \frametitle{Possible improvement of SAV}
 
     \begin{itemize}
-      \item BDF4C, BDF4D?
-      \item ?
-      \item ?
+      \item More relaxed restrictions on the free energy;\\
+      e.g.$r(t)=\sqrt{\int_\Omega |F(\phi)|dx}$
+      \item BDF4C, BDF4D? or implicit scheme of nonlinear part;
+      \item More work in convergence and error analysis of SAV;
     \end{itemize}
     %\footfullcite{bib_item}
 
