@@ -2,4 +2,74 @@ This is BibTeX, Version 0.99dThe top-level auxiliary file: SAV_report.aux
 The style file: biblatex.bst
 Database file #1: SAV_report-blx.bib
 Database file #2: SAV_report.bib
+You're missing a field name---line 8 of file SAV_report.bib
+ : 
+ : %%doi = "https://doi.org/10.1016/j.jcp.2017.10.021",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 65 of file SAV_report.bib
+ : 
+ : %%doi={10.1103/PhysRevE.60.3564},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 80 of file SAV_report.bib
+ : 
+ : %%doi={10.3934/dcds.2010.28.1669},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 95 of file SAV_report.bib
+ : 
+ : %%doi={10.1016/j.jcp.2012.09.020},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 110 of file SAV_report.bib
+ : 
+ : %%doi={10.1016/j.jcp.2010.11.033},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 124 of file SAV_report.bib
+ : 
+ : %%doi={10.1016/j.jcp.2016.09.029},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 138 of file SAV_report.bib
+ : 
+ : %%doi={10.1016/j.cma.2016.10.041},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 152 of file SAV_report.bib
+ : 
+ : %%doi={10.1016/j.jcp.2016.12.025},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 166 of file SAV_report.bib
+ : 
+ : %%doi={10.1016/j.jcp.2017.01.026},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 180 of file SAV_report.bib
+ : 
+ : %%doi={10.1016/j.cma.2017.01.031},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 194 of file SAV_report.bib
+ : 
+ : %%doi={10.1016/j.cma.2017.02.011},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 209 of file SAV_report.bib
+ : 
+ : %%doi = {10.1142/S0218202517500373},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 222 of file SAV_report.bib
+ : 
+ : %%doi = {10.1137/17M1159968},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 235 of file SAV_report.bib
+ : pages = "
+ :          1669",
+I'm skipping whatever remains of this entry
 Biblatex version: 1.7
+(There were 14 error messages)

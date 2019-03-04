@@ -9,6 +9,7 @@
 \usepackage[backend=bibtex,sorting=none]{biblatex}
 \addbibresource{SAV_report.bib}
 \setbeamertemplate{bibliography item}[text]
+\setbeamerfont{footnote}{size=\tiny}
 
 \title{Introduction of the\\ scalar auxiliary variable \\(SAV) approach method}
 \author{Liang Zeng}
@@ -29,11 +30,9 @@
 	\item Linear equation: \\
 	Lax Theorem: Stability = Convergence\\
 	 when Compatibility;
-	\item Nonlinear equation: Gradient Flow\cite{doi:10.1137/17M1159968};
+	\item Nonlinear equation: Gradient Flow\footfullcite{doi:10.1137/17M1159968};
 	\end{itemize}
 	
-        %\footfullcite{bib_item}
-
     \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
@@ -89,7 +88,7 @@ Local/Global computation: Inner product/convolution;
     \begin{frame}
     \frametitle{Convex splitting approach}
 
-A very popular approach for gradient flow is the so called convex splitting method which appears to be introduced by \cite{doi:10.1137/0730084} and popularized by \cite{Eyre199839}. Assuming the free energy density $F(\phi)$ can be split as the difference of two convex functions, namely, $F(\phi)=F_c(\phi)-−F_e(\phi)$ with $F''_c(\phi), F''_e(\phi)\geq 0.$
+A very popular approach for gradient flow is the so called convex splitting method which appears to be introduced by C. Elliott and A. Stuart\footfullcite{doi:10.1137/0730084} and popularized by David J. Eyre\footfullcite{Eyre199839}. Assuming the free energy density $F(\phi)$ can be split as the difference of two convex functions, namely, $F(\phi)=F_c(\phi)-−F_e(\phi)$ with $F''_c(\phi), F''_e(\phi)\geq 0.$
 
  Then, the first-order convex splitting scheme reads:
 
@@ -124,7 +123,7 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{frame}
     \frametitle{Stabilized approach}
-Another widely used approach is the stabilized scheme, introduced in \cite{Zhu19993564} (see also \cite{Shen20101669}). The main idea is to introduce an artificial stabilization term to balance the explicit treatment of the nonlinear term. A first-order stabilized scheme for \ref{GFlow} reads:
+Another widely used approach is the stabilized scheme, introduced by Zhu\footfullcite{Zhu19993564} (see also J. Shen\footfullcite{Shen20101669}). The main idea is to introduce an artificial stabilization term to balance the explicit treatment of the nonlinear term. A first-order stabilized scheme for \ref{GFlow} reads:
 
 \begin{equation}\label{Stabilized approach}
   \begin{split}
@@ -133,7 +132,7 @@ Another widely used approach is the stabilized scheme, introduced in \cite{Zhu19
   \end{split}
 \end{equation}
 
-where S is a suitable stabilization parameter. It is shown in [18] that, under the assumption $\Vert F''(\phi)\Vert_\infty\leq L$, the above scheme is unconditionally stable for all $S \geq \frac{L}{2}$.
+where S is a suitable stabilization parameter. Under the assumption $\Vert F''(\phi)\Vert_\infty\leq L$, the above scheme is unconditionally stable for all $S \geq \frac{L}{2}$.
         %\footfullcite{bib_item}
 
     \end{frame}
@@ -142,12 +141,19 @@ where S is a suitable stabilization parameter. It is shown in [18] that, under t
     \begin{frame}
     \frametitle{Invariant energy quadratization (IEQ) approaches}
 	
-The approach is proposed in \cite{Guillén-gonzález2013140} for dealing with Allen-–Cahn and Cahn–-Hilliard equations with double well free energy. It is based on a Lagrange multiplier approach introduced in \cite{Badia20111686}.
+The approach is proposed in 2013\footfullcite{Guillén-gonzález2013140} for dealing with Allen-–Cahn and Cahn–-Hilliard equations with double well free energy. It is based on a Lagrange multiplier approach introduced in 2011\footfullcite{Badia20111686}.
 
-%It can lead to unconditionally energy stable, linear, second-order schemes for Allen–Cahn and Cahn–Hilliard equations with double-well free energies. However, it cannot be easily extended to deal with other free energies. 
+It can lead to unconditionally energy stable, linear, second-order schemes for Allen–Cahn and Cahn–Hilliard equations with double-well free energies. However, it cannot be easily extended to deal with other free energies. 
 
-Very recently, X. Yang and his collaborators \cite{Yang2016294}, \cite{Yang2017691}, \cite{Yang2017104}, \cite{Yu2017665}, \cite{Zhao2017803}, \cite{Yang20171005}, \cite{doi:10.1142/S0218202517500373} made a big leap in generalizing the Lagrange multiplier approach to the so called invariant energy quadratization (IEQ) approach which is applicable to a large class of free energies.	
+
 	
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}
+    \frametitle{Invariant energy quadratization (IEQ) approaches}
+Very recently, X. Yang and his collaborators \footfullcite{Yang2016294,Yang2017691,Yang2017104,Yu2017665,Zhao2017803,Yang20171005,doi:10.1142/S0218202517500373} made a big leap in generalizing the Lagrange multiplier approach to the so called invariant energy quadratization (IEQ) approach which is applicable to a large class of free energies.	
+
 Assuming that there exists $C_0 \geq 0$ such that $F(\phi) \geq -C_0$, one then introduces a Lagrange multiplier (auxiliary variable) $q(t,x;\phi)=\sqrt{F(\phi)+C_0}$, and rewrite the equation as
 	\end{frame}
 
@@ -379,7 +385,7 @@ computation cost.
 \begin{frame}[allowframebreaks]
     \frametitle{Numerical result}
 
-    Example.1: Evolutions of coarsening process and of energy\cite{SHEN2018407}
+    Example.1: Evolutions of coarsening process and of energy\footfullcite{SHEN2018407}
     
     In this example, we simulate the Cahn-–Hilliard equation on $[0,2\pi)^2$, starting from
 \begin{equation}
@@ -396,7 +402,7 @@ We investigate the coarsening process with $\epsilon^2=0.01$ and $\delta t=2\tim
 	\label{fig:1}   %标签，用作引用
 \end{figure}
     
-Example.2: Energy evolutions for BDF3 and BDF4 schemes.\cite{article}
+Example.2: Energy evolutions for BDF3 and BDF4 schemes.\footfullcite{article}
 
 We take Cahn--Hilliard equation as an example to demonstrate the numerical performances of SAV/BDF3 and SAV/BDF4 schemes. We fix the computational domain as $[0,2\pi)^2$ and $\epsilon=0.1$. We use the Fourier Galerkin method for spatial discretization with $N=2^7$. The initial data is $u_0(x,y)=0.05\sin(x)\sin(y)$.
 
@@ -439,7 +445,7 @@ We presented the SAV approach for gradient flows, which is inspired by the Lagra
 \begin{itemize}
   \item A particular advantage of unconditionally energy stable scheme is that it can be coupled with an adaptive time stepping strategy.
   \item The proofs are based on variational formulation with simple test functions, so that they can be extended to full discrete discretization with Galerkin approximation in space.
-  \item We have performed rigorous error analysis to show that, under mild conditions, the solution of proposed schemes converge to the solution of the original problem.\cite{doi:10.1137/17M1159968}
+  \item We have performed rigorous error analysis to show that, under mild conditions, the solution of proposed schemes converge to the solution of the original problem.\footfullcite{doi:10.1137/17M1159968}
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -448,7 +454,7 @@ We presented the SAV approach for gradient flows, which is inspired by the Lagra
     \begin{itemize}
       \item Restrictions on the free energy;
       \item Extrapolation scheme of nonlinear part;
-      \item Restrictions on convergence and error analysis\cite{doi:10.1137/17M1159968};
+      \item Restrictions on convergence and error analysis\footfullcite{doi:10.1137/17M1159968};
     \end{itemize}
 
         %\footfullcite{bib_item}
